@@ -6,6 +6,7 @@ import java.util.List;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 public class HabitViewModel extends AndroidViewModel {
 
@@ -19,7 +20,7 @@ public class HabitViewModel extends AndroidViewModel {
         mAllHabits=mRepository.getAllHabits();
     }
 
-    LiveData<List<Habit>> getAllHabits(){
+    LiveData<List<Habit>> getAllHabits(MainActivity mainActivity, Observer<List<Habit>> observer){
         return mAllHabits;
     }
 

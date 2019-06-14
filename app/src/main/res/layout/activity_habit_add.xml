@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2EEE8">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_habit_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#0079a8"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/add_habit_name_tv"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_habit_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="274dp"
+        android:layout_marginRight="274dp"
+        android:backgroundTint="#0079a8"
+        android:text="İsim"
+        android:textColor="#0079a8"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_habit_name_tv"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginRight="155dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:shadowColor="#0079a8"
+        android:backgroundTint="#0079a8"
+        android:textColor="#0079a8" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="226dp"
+        android:layout_marginRight="226dp"
+        android:backgroundTint="#0079a8"
+        android:text="Açıklama"
+        android:textColor="#0079a8"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginRight="156dp"
+        android:backgroundTint="#0079a8"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="#0079a8"
+        android:theme="@style/colorBlue" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="310dp"
+        android:layout_marginRight="310dp"
+        android:text="Tekrar"
+        android:textColor="#0079a8"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="234dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-25dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:backgroundTint="#0079a8"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="74dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="Hatırlatıcı"
+        android:textColor="#0079a8"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/habit_add_esc_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="115dp"
+        android:text="İptal"
+        android:background="#0079a8"/>
+
+    <Button
+        android:id="@+id/habit_add_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="115dp"
+        android:layout_toEndOf="@+id/habit_add_esc_button"
+        android:layout_toRightOf="@+id/habit_add_esc_button"
+        android:text="Kaydet"
+        android:background="#0079a8"/>
+
+    <Button
+        android:id="@+id/timepickerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@+id/spinner"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="Saat Seç"
+        android:background="#0079a8"/>
+
+    <TextView
+        android:id="@+id/timetv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:text="00:00"
+        android:textColor="#0079a8"
+        android:textSize="16sp" />
+
+</RelativeLayout>

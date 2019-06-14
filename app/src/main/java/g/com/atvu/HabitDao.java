@@ -3,6 +3,7 @@ package g.com.atvu;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,8 +16,8 @@ public interface HabitDao {
     @Insert
     void insert(Habit habit);
 
-    @Delete
-    void deleteAll();
+    //@Delete
+    //void deleteAll();
 
     @Delete
     void deleteOne(Habit habit);

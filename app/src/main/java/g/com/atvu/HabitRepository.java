@@ -30,10 +30,11 @@ public class HabitRepository {
         new updateAsync(mHabitDao).execute(habit);
     }
 
+    /*
     public void deleteAll(){
         new deleteAllAsync(mHabitDao).execute();
     }
-
+    */
     public void deleteOne(Habit habit){
         new deleteOneAsync(mHabitDao).execute(habit);
     }
@@ -70,7 +71,7 @@ public class HabitRepository {
             return null;
         }
     }
-
+    /*
     private static class deleteAllAsync extends AsyncTask<Habit,Void,Void>{
 
         private HabitDao mAsyncDao;
@@ -85,7 +86,7 @@ public class HabitRepository {
             return null;
         }
     }
-
+    */
     private static class deleteOneAsync extends AsyncTask<Habit,Void,Void>{
 
         private HabitDao mAsyncDao;

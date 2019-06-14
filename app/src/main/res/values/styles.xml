@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="colorBlue">
+        <!-- Used for the bottom line when not selected / focused -->
+        <item name="colorControlNormal">#0079a8</item>
+        <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
+    </style>
 </resources>

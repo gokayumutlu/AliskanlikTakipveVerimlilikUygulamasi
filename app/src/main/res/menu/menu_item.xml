@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/plus"
+        android:title="add"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_modify"
+        android:icon="@drawable/edit_button"
+        android:title="edit"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/parent_usage"
+        android:title="Veli Kullanım"
+        app:showAsAction="never"/>
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+</menu>

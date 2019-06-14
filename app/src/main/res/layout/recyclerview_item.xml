@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorButton"
+        android:text=""/>
+
+    <EditText
+        android:id="@+id/habitName"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginRight="180dp"
+        android:layout_toEndOf="@+id/button"
+        android:layout_toRightOf="@+id/button"
+        android:inputType="textPersonName"
+        android:text="Su iç"
+        android:textColor="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
+    <ImageView
+        android:id="@+id/lastfourday_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-180dp"
+        android:layout_marginLeft="-180dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/habitName"
+        android:layout_toRightOf="@+id/habitName"
+        app:srcCompat="@drawable/checked" />
+
+    <ImageView
+        android:id="@+id/lastthreeday_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/lastfourday_imageview"
+        android:layout_toRightOf="@+id/lastfourday_imageview"
+        app:srcCompat="@drawable/error" />
+
+    <ImageView
+        android:id="@+id/lasttwoday_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/lastthreeday_imageview"
+        android:layout_toRightOf="@+id/lastthreeday_imageview"
+        app:srcCompat="@drawable/checked" />
+
+    <ImageView
+        android:id="@+id/lastoneday_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/lasttwoday_imageview"
+        android:layout_toRightOf="@+id/lasttwoday_imageview"
+        app:srcCompat="@drawable/error" />
+
+
+</RelativeLayout>

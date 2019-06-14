@@ -1,18 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#F2EEE8" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#0079a8"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/main_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/main_toolbar">
+
+        <TextView
+            android:id="@+id/main_linear_tv1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/main_linear_tv2"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/main_linear_tv3"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/main_linear_tv4"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="14 Mayıs"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/main_linear_tv5"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="15 Mayıs"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"/>
+        <TextView
+            android:id="@+id/main_linear_tv6"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="16 Mayıs"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/main_linear_tv7"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="17 Mayıs"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17sp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_linear_layout"
+        tools:listitem="@layout/recyclerview_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>
+

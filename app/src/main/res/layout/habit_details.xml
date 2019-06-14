@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa">
+
+
+
+    <LinearLayout
+        android:id="@+id/habitdetailslinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/habit_desc_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#0079a8"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/habitdetaildesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="En az 30 dakika meditasyon yaptın mı?"
+                android:textColor="#0079a8"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/habitdetailslinear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/habitdesctekrartv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:text="Günde 1 defa"
+                    android:textColor="#0079a8"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/habitdescsaat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="22:00"
+                    android:textColor="#0079a8"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/habitdescoverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Genel Bakış"
+            android:textColor="#0079a8"
+            android:textSize="16sp"
+            android:layout_marginStart="47dp"
+            android:layout_marginLeft="47dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/habitdesclinear3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/habitdescoverviewimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/overview2" />
+
+                <TextView
+                    android:id="@+id/habitdeschpercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="%84"
+                    android:textColor="#0079a8"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/habitdeschtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8 Gün"
+                    android:textColor="#0079a8"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="351dp"
+            android:layout_alignStart="@+id/habitdetailslinear"
+            app:srcCompat="@drawable/chart"
+            android:layout_alignLeft="@+id/habitdetailslinear" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
