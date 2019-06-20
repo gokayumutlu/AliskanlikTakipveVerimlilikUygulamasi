@@ -28,6 +28,7 @@ public class HabitViewModel extends AndroidViewModel {
         mRepository.insert(habit);
     }
 
+
     public void update(Habit habit){
         mRepository.update(habit);
     }

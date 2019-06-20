@@ -29,10 +29,20 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder>
         Habit currentHabit=habits.get(position);
         holder.habitName.setText(currentHabit.getHabitName());
         //holder.habitId.setText(String.valuesOf(currentHabit.getId)); // string yerine int istenirse bu şekilde
-        holder.imageView1.setImageResource(R.drawable.checked);
-        holder.imageView2.setImageResource(R.drawable.checked);
-        holder.imageView3.setImageResource(R.drawable.error);
-        holder.imageView4.setImageResource(R.drawable.checked);
+        //holder.imageView1.setImageResource(R.drawable.checked);
+        //holder.imageView2.setImageResource(R.drawable.checked);
+        //holder.imageView3.setImageResource(R.drawable.error);
+        //holder.imageView4.setImageResource(R.drawable.checked);
+
+        if(currentHabit.getHabitDone()==0){
+
+        }
+        else if(currentHabit.getHabitDone()==1){
+
+        }
+        else{
+
+        }
 
     }
 

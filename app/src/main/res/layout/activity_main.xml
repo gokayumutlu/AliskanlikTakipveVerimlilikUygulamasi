@@ -41,7 +41,6 @@
             android:id="@+id/main_linear_tv4"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="14 Mayıs"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp" />
 
@@ -49,24 +48,24 @@
             android:id="@+id/main_linear_tv5"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="15 Mayıs"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
+
         <TextView
             android:id="@+id/main_linear_tv6"
-            android:layout_width="60dp"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
-            android:text="16 Mayıs"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/main_linear_tv7"
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:text="17 Mayıs"
+            android:text="21 Haziran"
+            android:gravity="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -74,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/main_linear_layout"
-        tools:listitem="@layout/recyclerview_item">
+        tools:listitem="@layout/recyclerview_item2">
 
     </androidx.recyclerview.widget.RecyclerView>
 

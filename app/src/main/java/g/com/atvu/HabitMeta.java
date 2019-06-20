@@ -9,8 +9,15 @@ import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "habit_meta",
-        foreignKeys = @ForeignKey(onDelete = CASCADE,entity = Habit.class,parentColumns = "habit_id",childColumns = "habit_id"),indices = {@Index("habit_id")})
+/*
+ * ,
+        foreignKeys = @ForeignKey(onDelete = CASCADE,entity = Habit.class,
+                parentColumns = "habit_id",
+                childColumns = "habit_id"), indices = {@Index("habit_id")}
+  *
+  * */
+
+@Entity(tableName = "habit_meta")
 public class HabitMeta {
 
     @PrimaryKey(autoGenerate = true)
@@ -29,6 +36,14 @@ public class HabitMeta {
 
     @ColumnInfo(name="habit_done")
     private int habitDone;
+
+    public HabitMeta(int habitMetaId, int habitId, long repeatStart, long repeatInterval, int habitDone) {
+        this.habitMetaId = habitMetaId;
+        this.habitId = habitId;
+        this.repeatStart = repeatStart;
+        this.repeatInterval = repeatInterval;
+        this.habitDone = habitDone;
+    }
 
     public int getHabitMetaId() {
         return habitMetaId;

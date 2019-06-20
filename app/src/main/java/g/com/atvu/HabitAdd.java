@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -46,6 +47,8 @@ public class HabitAdd extends AppCompatActivity {
         saatTv=findViewById(R.id.timetv);
         iptal=findViewById(R.id.habit_add_esc_button);
         save=findViewById(R.id.habit_add_save_button);
+        addTitleEt=findViewById(R.id.add_habit_et_title);
+        addDescEt=findViewById(R.id.add_habit_et_desc);
 
         getSupportActionBar();
         setTitle("Alışkanlık Ekle");
@@ -115,7 +118,7 @@ public class HabitAdd extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveHabit(hour2,minute2);
+                saveHabit();
             }
         });
 
@@ -123,13 +126,14 @@ public class HabitAdd extends AppCompatActivity {
 
 
 
-    private void saveHabit(int hourofday, int minute){
+    private void saveHabit(){
         String title=addTitleEt.getText().toString();
         String desc=addDescEt.getText().toString();
         //String sInterval=Long.toString(interval);
 
         if(title.trim().isEmpty() || desc.trim().isEmpty()){
             Log.d("title veya desc empty","empty title, desc");
+            Toast.makeText(this,"İsim ve açıklama giriniz",Toast.LENGTH_LONG);
             return;
         }
 

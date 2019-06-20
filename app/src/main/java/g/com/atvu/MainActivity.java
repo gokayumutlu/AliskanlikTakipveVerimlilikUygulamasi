@@ -2,6 +2,7 @@ package g.com.atvu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -83,10 +84,18 @@ public class MainActivity extends AppCompatActivity {
             String time=data.getStringExtra(HabitAdd.EXTRA_TIME);
 
             //interval=Long.valueOf(sInterval);
+            //HabitMeta habitMeta=new HabitMeta(0,0,1561057800,86400,0);
 
-            Habit habit=new Habit(title,desc);
-            HabitMeta habitMeta=new HabitMeta()
+            Habit habit=new Habit(0,11,title,desc,1561057800,sInterval,0,time);
+            habitViewModel.insert(habit);
 
+            Log.d("habit_saved","habit saved");
+            Toast.makeText(this,"Habit Saved",Toast.LENGTH_LONG).show();
+
+        }
+        else{
+            Log.d("habit_not_saved","habit not saved");
+            Toast.makeText(this, "Habit Not Saved", Toast.LENGTH_SHORT).show();
         }
     }
 }
