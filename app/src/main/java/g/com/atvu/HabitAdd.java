@@ -8,11 +8,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class HabitAdd extends AppCompatActivity {
 
@@ -21,7 +27,15 @@ public class HabitAdd extends AppCompatActivity {
     TextView saatTv;
     Context context=this;
     Button iptal,save;
+    EditText addTitleEt,addDescEt;
+    public int hour2,minute2;
+    String time;
+    long interval;
 
+    public static final String EXTRA_TITLE="g.com.atvu.EXTRA_TITLE";
+    public static final String EXTRA_DESC="g.com.atvu.EXTRA_DESC";
+    public static final String EXTRA_INTERVAL="g.com.atvu.EXTRA_INTERVAL";
+    public static final String EXTRA_TIME="g.com.atvu.EXTRA_TIME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +47,33 @@ public class HabitAdd extends AppCompatActivity {
         iptal=findViewById(R.id.habit_add_esc_button);
         save=findViewById(R.id.habit_add_save_button);
 
+        getSupportActionBar();
+        setTitle("Alışkanlık Ekle");
+
+        final String[] arraySpinner=new String[]{"Günde 1 defa","Günde 2 defa"};
+        Spinner s=findViewById(R.id.spinnerTekrar);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,arraySpinner);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("onItemSelected"," :"+arraySpinner[i]);
+                //interval=arraySpinner[i];
+                switch (i){
+                    case 0: interval= 24*60*60; break;        //24 saat interval
+                    case 1: interval=12*60*60; break;         //12 saat interval
+                    default: interval= 1*60*60; Log.d("switch default","Default"); break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         saatSecBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +84,15 @@ public class HabitAdd extends AppCompatActivity {
                 TimePickerDialog tpd=new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourofday, int minute) {
+                        takvim.set(Calendar.HOUR_OF_DAY,hourofday);
+                        takvim.set(Calendar.MINUTE,minute);
+
+                        SimpleDateFormat timeformat=new SimpleDateFormat("HH:mm");
+                        time=timeformat.format(takvim.getTime());
+
                         saatTv.setText(hourofday+":"+minute);
+                        hour2=hourofday;
+                        minute2=minute;
                         Log.d("hour:"," "+hourofday);
                         Log.d("minute:"," "+minute);
                     }
@@ -66,10 +115,33 @@ public class HabitAdd extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in=new Intent(HabitAdd.this,details_habit.class);
-                startActivity(in);
+                saveHabit(hour2,minute2);
             }
         });
 
     }
+
+
+
+    private void saveHabit(int hourofday, int minute){
+        String title=addTitleEt.getText().toString();
+        String desc=addDescEt.getText().toString();
+        //String sInterval=Long.toString(interval);
+
+        if(title.trim().isEmpty() || desc.trim().isEmpty()){
+            Log.d("title veya desc empty","empty title, desc");
+            return;
+        }
+
+        Intent data=new Intent();
+        data.putExtra(EXTRA_TITLE,title);
+        data.putExtra(EXTRA_DESC,desc);
+        data.putExtra(EXTRA_INTERVAL,interval);
+        data.putExtra(EXTRA_TIME,time);
+        setResult(RESULT_OK,data);
+        finish();
+
+
+    }
+
 }

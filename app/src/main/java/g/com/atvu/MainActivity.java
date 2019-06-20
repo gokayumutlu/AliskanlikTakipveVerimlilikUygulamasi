@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -20,6 +21,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private HabitViewModel habitViewModel;
+    public static final int ADD_HABIT_REQUEST=1;
+    //long interval;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,27 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.action_add:
                 Intent intent=new Intent(MainActivity.this,HabitAdd.class);
-                startActivity(intent);
+                startActivityForResult(intent,ADD_HABIT_REQUEST);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==ADD_HABIT_REQUEST && resultCode==RESULT_OK){
+            String title=data.getStringExtra(HabitAdd.EXTRA_TITLE);
+            String desc=data.getStringExtra(HabitAdd.EXTRA_DESC);
+            long sInterval=data.getLongExtra(HabitAdd.EXTRA_INTERVAL,1);
+            String time=data.getStringExtra(HabitAdd.EXTRA_TIME);
+
+            //interval=Long.valueOf(sInterval);
+
+            Habit habit=new Habit(title,desc);
+            HabitMeta habitMeta=new HabitMeta()
+
+        }
     }
 }

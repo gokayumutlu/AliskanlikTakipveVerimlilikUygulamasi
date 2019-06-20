@@ -27,6 +27,9 @@ public class HabitMeta {
     @ColumnInfo(name = "repeat_interval")
     private long repeatInterval;
 
+    @ColumnInfo(name="habit_done")
+    private int habitDone;
+
     public int getHabitMetaId() {
         return habitMetaId;
     }
@@ -57,5 +60,13 @@ public class HabitMeta {
 
     public void setRepeatInterval(long repeatInterval) {
         this.repeatInterval = repeatInterval;
+    }
+
+    public int getHabitDone() {
+        return habitDone;
+    }
+
+    public void setHabitDone(int habitDone) {
+        this.habitDone = habitDone;
     }
 }
