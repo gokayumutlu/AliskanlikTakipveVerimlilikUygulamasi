@@ -25,10 +25,11 @@ public interface HabitDao {
     @Update
     void update(Habit habit);
 
-    @Query("SELECT * FROM habit")
+    @Query("SELECT * FROM habit ORDER BY habit_id DESC")
     LiveData<List<Habit>> allHabits();
 
-
+    @Query("DELETE FROM habit")
+    void deleteAll();
 
 
 

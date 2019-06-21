@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".details_habit" android:parentActivityName=".MainActivity"></activity>
         <activity
-            android:name=".HabitAdd"
+            android:name=".HabitAddEdit"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

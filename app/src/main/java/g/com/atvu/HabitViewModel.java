@@ -20,7 +20,7 @@ public class HabitViewModel extends AndroidViewModel {
         mAllHabits=mRepository.getAllHabits();
     }
 
-    LiveData<List<Habit>> getAllHabits(MainActivity mainActivity, Observer<List<Habit>> observer){
+    LiveData<List<Habit>> getAllHabits(){ //MainActivity mainActivity, Observer<List<Habit>> observer
         return mAllHabits;
     }
 
@@ -37,6 +37,9 @@ public class HabitViewModel extends AndroidViewModel {
         mRepository.deleteOne(habit);
     }
 
+    public void deleteAll(){
+        mRepository.deleteAll();
+    }
 
 
 

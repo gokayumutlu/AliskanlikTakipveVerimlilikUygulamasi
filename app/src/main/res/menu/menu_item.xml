@@ -17,6 +17,10 @@
         android:title="Veli Kullanım"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/delete_all_habits"
+        android:title="Bütün hedefleri sil"
+        app:showAsAction="never"/>
+
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_settings"
         android:title="Settings"

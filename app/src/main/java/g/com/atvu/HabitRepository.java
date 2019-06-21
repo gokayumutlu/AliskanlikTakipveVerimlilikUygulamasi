@@ -14,7 +14,7 @@ public class HabitRepository {
 
     public HabitRepository(Application application){
         HabitDatabase db= HabitDatabase.getDatabase(application);
-        mHabitDao =db.hedefDao();
+        mHabitDao =db.habitDao();
         mAllHabits= mHabitDao.allHabits();
     }
 
@@ -39,7 +39,9 @@ public class HabitRepository {
         new deleteOneAsync(mHabitDao).execute(habit);
     }
 
-
+    public void deleteAll(){
+        new deleteAllAsync(mHabitDao).execute();
+    }
 
 
     private static class insertAsync extends AsyncTask<Habit,Void,Void> {
@@ -102,5 +104,19 @@ public class HabitRepository {
         }
     }
 
+    private static class deleteAllAsync extends AsyncTask<Void,Void,Void>{
+
+        private HabitDao mAsyncDao;
+
+        deleteAllAsync(HabitDao dao){
+            mAsyncDao=dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncDao.deleteAll();
+            return null;
+        }
+    }
 
 }

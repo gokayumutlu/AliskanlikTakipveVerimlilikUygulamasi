@@ -19,9 +19,8 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
-public class HabitAdd extends AppCompatActivity {
+public class HabitAddEdit extends AppCompatActivity {
 
 
     Button saatSecBtn;
@@ -33,6 +32,7 @@ public class HabitAdd extends AppCompatActivity {
     String time;
     long interval;
 
+    public static final String EXTRA_ID="g.com.atvu.EXTRA_ID";
     public static final String EXTRA_TITLE="g.com.atvu.EXTRA_TITLE";
     public static final String EXTRA_DESC="g.com.atvu.EXTRA_DESC";
     public static final String EXTRA_INTERVAL="g.com.atvu.EXTRA_INTERVAL";
@@ -51,7 +51,18 @@ public class HabitAdd extends AppCompatActivity {
         addDescEt=findViewById(R.id.add_habit_et_desc);
 
         getSupportActionBar();
-        setTitle("Alışkanlık Ekle");
+
+        Intent intent=getIntent();
+        if(intent.hasExtra(EXTRA_ID)){
+            setTitle("Hedef düzenle");
+            addTitleEt.setText(intent.getStringExtra(EXTRA_TITLE));
+            addDescEt.setText(intent.getStringExtra(EXTRA_DESC));
+        }
+        else{
+            setTitle("Alışkanlık Ekle");
+        }
+
+
 
         final String[] arraySpinner=new String[]{"Günde 1 defa","Günde 2 defa"};
         Spinner s=findViewById(R.id.spinnerTekrar);
@@ -110,7 +121,7 @@ public class HabitAdd extends AppCompatActivity {
         iptal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(HabitAdd.this,MainActivity.class);
+                Intent i=new Intent(HabitAddEdit.this,MainActivity.class);
                 startActivity(i);
             }
         });
@@ -142,6 +153,12 @@ public class HabitAdd extends AppCompatActivity {
         data.putExtra(EXTRA_DESC,desc);
         data.putExtra(EXTRA_INTERVAL,interval);
         data.putExtra(EXTRA_TIME,time);
+
+        int id=getIntent().getIntExtra(EXTRA_ID,-1);
+        if(id!=-1){
+            data.putExtra(EXTRA_ID,id);
+        }
+
         setResult(RESULT_OK,data);
         finish();
 
