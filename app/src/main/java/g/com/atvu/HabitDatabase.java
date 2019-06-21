@@ -24,7 +24,7 @@ public abstract class HabitDatabase extends RoomDatabase {
             synchronized (HabitDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext()
-                            , HabitDatabase.class, "habit_databse")
+                            , HabitDatabase.class, "habit_database")
                             .addCallback(roomCallback)
                             .build();
                 }

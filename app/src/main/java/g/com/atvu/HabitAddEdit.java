@@ -64,7 +64,7 @@ public class HabitAddEdit extends AppCompatActivity {
 
 
 
-        final String[] arraySpinner=new String[]{"Günde 1 defa","Günde 2 defa"};
+        final String[] arraySpinner=new String[]{"Günde 1 defa","Günde 2 defa","Haftada 1 defa"};
         Spinner s=findViewById(R.id.spinnerTekrar);
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,arraySpinner);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -78,6 +78,7 @@ public class HabitAddEdit extends AppCompatActivity {
                 switch (i){
                     case 0: interval= 24*60*60; break;        //24 saat interval
                     case 1: interval=12*60*60; break;         //12 saat interval
+                    case 2: interval=7*24*60*60; break;       //haftalık interval
                     default: interval= 1*60*60; Log.d("switch default","Default"); break;
                 }
             }
@@ -162,6 +163,11 @@ public class HabitAddEdit extends AppCompatActivity {
         setResult(RESULT_OK,data);
         finish();
 
+
+    }
+
+    public void alarmManager(){
+        Calendar calendar=Calendar.getInstance();
 
     }
 

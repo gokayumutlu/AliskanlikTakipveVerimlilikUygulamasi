@@ -31,6 +31,9 @@ public interface HabitDao {
     @Query("DELETE FROM habit")
     void deleteAll();
 
+    @Query("SELECT * FROM habit WHERE habit_id= :id")
+    List<Habit> getOneHabit(int id);
+
 
 
 }

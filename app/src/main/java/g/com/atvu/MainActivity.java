@@ -1,6 +1,9 @@
 package g.com.atvu;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -25,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     private HabitViewModel habitViewModel;
     public static final int ADD_HABIT_REQUEST=1;
-    public static final int EDIT_HABIT_REQUEST=1;
-    //long interval;
+    public static final int EDIT_HABIT_REQUEST=2;
+    long interval;
+    public String time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 habitViewModel.delete( habitAdapter.getHabitAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this,"Habit deleted",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Hedef silindi",Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -78,6 +84,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        habitAdapter.setOnItemSClickListener(new HabitAdapter.onItemSClickListener() {
+            @Override
+            public void onItemClick(Habit habit) {
+                Intent intent=new Intent(MainActivity.this,details_habit.class);
+                intent.putExtra(HabitAddEdit.EXTRA_ID,habit.getHabitId());
+                intent.putExtra(HabitAddEdit.EXTRA_TITLE,habit.getHabitName());
+                intent.putExtra(HabitAddEdit.EXTRA_DESC,habit.getHabitDesc());
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
@@ -117,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
             String title=data.getStringExtra(HabitAddEdit.EXTRA_TITLE);
             String desc=data.getStringExtra(HabitAddEdit.EXTRA_DESC);
             long sInterval=data.getLongExtra(HabitAddEdit.EXTRA_INTERVAL,1);
-            String time=data.getStringExtra(HabitAddEdit.EXTRA_TIME);
-
+            time=data.getStringExtra(HabitAddEdit.EXTRA_TIME);
+            alarm();
             //interval=Long.valueOf(sInterval);
             //HabitMeta habitMeta=new HabitMeta(0,0,1561057800,86400,0);
 
@@ -126,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             habitViewModel.insert(habit);
 
             Log.d("habit_saved","habit saved");
-            Toast.makeText(this,"Habit Saved",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Hedef kaydedildi",Toast.LENGTH_LONG).show();
 
         }
         else if(requestCode==EDIT_HABIT_REQUEST && resultCode==RESULT_OK){
@@ -140,15 +159,33 @@ public class MainActivity extends AppCompatActivity {
             String desc=data.getStringExtra(HabitAddEdit.EXTRA_DESC);
             long sInterval=data.getLongExtra(HabitAddEdit.EXTRA_INTERVAL,1);
             String time=data.getStringExtra(HabitAddEdit.EXTRA_TIME);
-
+            alarm();
             Habit habit=new Habit(id,17,title,desc,1561099560,sInterval,0,time);
             habit.setHabitId(id);
             habitViewModel.update(habit);
-            Toast.makeText(this,"Habit updated",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Hedef güncellendi",Toast.LENGTH_SHORT).show();
         }
         else{
             Log.d("habit_not_saved","habit not saved");
             Toast.makeText(this, "Habit Not Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void alarm(){
+        AlarmManager alarmManager=(AlarmManager) getSystemService(ALARM_SERVICE);
+        String[] array=time.split(":");
+        int hour=Integer.parseInt(array[0]);
+        int minute=Integer.parseInt(array[1]);
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY,hour);
+        calendar.set(Calendar.MINUTE,minute);
+
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), broadcast);
         }
     }
 }

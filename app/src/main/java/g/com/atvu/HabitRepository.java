@@ -2,6 +2,7 @@ package g.com.atvu;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
@@ -44,6 +45,16 @@ public class HabitRepository {
     }
 
 
+    public List<Habit> getOneHabit(int id){
+        try {
+            return new getOneHabitAsync(mHabitDao).execute(id).get();
+        }catch (Exception e){
+            Log.d("Loggg","error repository");
+            return null;
+        }
+    }
+
+
     private static class insertAsync extends AsyncTask<Habit,Void,Void> {
 
         private HabitDao mAsyncDao;
@@ -73,22 +84,7 @@ public class HabitRepository {
             return null;
         }
     }
-    /*
-    private static class deleteAllAsync extends AsyncTask<Habit,Void,Void>{
 
-        private HabitDao mAsyncDao;
-
-        deleteAllAsync(HabitDao dao){
-            mAsyncDao=dao;
-        }
-
-        @Override
-        protected Void doInBackground(Habit... habits) {
-            mAsyncDao.deleteAll();
-            return null;
-        }
-    }
-    */
     private static class deleteOneAsync extends AsyncTask<Habit,Void,Void>{
 
         private HabitDao mAsyncDao;
@@ -116,6 +112,22 @@ public class HabitRepository {
         protected Void doInBackground(Void... voids) {
             mAsyncDao.deleteAll();
             return null;
+        }
+    }
+
+
+    public class getOneHabitAsync extends AsyncTask<Integer, Void, List<Habit>>{
+        private HabitDao mAsyncDao;
+
+        getOneHabitAsync(HabitDao dao){
+            mAsyncDao=dao;
+        }
+
+
+        @Override
+        protected List<Habit> doInBackground(Integer... ints) {
+            return mAsyncDao.getOneHabit(ints[0].intValue());
+
         }
     }
 

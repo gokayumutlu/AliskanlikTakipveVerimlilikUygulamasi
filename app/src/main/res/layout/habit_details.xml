@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="%84"
+                    android:text="%0"
                     android:textColor="#0079a8"
                     android:textSize="20sp" />
 
@@ -113,19 +113,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="8 Gün"
+                    android:text="1 Gün"
                     android:textColor="#0079a8"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="351dp"
-            android:layout_alignStart="@+id/habitdetailslinear"
-            app:srcCompat="@drawable/chart"
-            android:layout_alignLeft="@+id/habitdetailslinear" />
+
 
 
     </LinearLayout>

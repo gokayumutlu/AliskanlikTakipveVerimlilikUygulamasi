@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".details_habit" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity
+            android:name=".details_habit"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".HabitAddEdit"
             android:parentActivityName=".MainActivity" />
@@ -20,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".AlarmReceiver"/>
     </application>
 
 </manifest>

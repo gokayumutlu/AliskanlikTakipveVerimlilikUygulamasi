@@ -42,5 +42,10 @@ public class HabitViewModel extends AndroidViewModel {
     }
 
 
+    public List<Habit> getOneHabit(int id){
+        return mRepository.getOneHabit(id);
+    }
+
+
 
 }

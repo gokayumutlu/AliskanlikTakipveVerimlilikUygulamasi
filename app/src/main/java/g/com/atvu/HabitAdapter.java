@@ -16,6 +16,7 @@ import java.util.List;
 public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder> {
 
     private OnItemLongClickListener listener;
+    private onItemSClickListener listenerS;
     private List<Habit> habits=new ArrayList<>();
 
     @NonNull
@@ -110,6 +111,17 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder>
                 }
             });
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position=getAdapterPosition();
+                    if(listenerS!=null && position!=RecyclerView.NO_POSITION){
+                        listenerS.onItemClick(habits.get(position));
+                    }
+
+                }
+            });
+
         }
     }
 
@@ -120,6 +132,14 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitHolder>
 
     public void setOnItemLongClickListener(OnItemLongClickListener listener){
         this.listener=listener;
+    }
+
+    public interface onItemSClickListener{
+        void onItemClick(Habit habit);
+    }
+
+    public void setOnItemSClickListener(onItemSClickListener listenerS){
+        this.listenerS=listenerS;
     }
 
 }
