@@ -116,6 +116,10 @@
                     android:text="1 Gün"
                     android:textColor="#0079a8"
                     android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
 

@@ -3,8 +3,9 @@ package g.com.atvu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class details_habit extends AppCompatActivity {
     int habitId;
     String habitTitle,habitDesc;
     List<Habit> habits;
-    public static HabitDatabase hdb;
+    //public static HabitDatabase hdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,12 @@ public class details_habit extends AppCompatActivity {
         habitId=intent.getIntExtra(HabitAddEdit.EXTRA_ID,-1);
         habitTitle=intent.getStringExtra(HabitAddEdit.EXTRA_TITLE);
         habitDesc=intent.getStringExtra(HabitAddEdit.EXTRA_DESC);
+
+        SharedPreferences sharedPreferences=this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("habitTitle",habitTitle);
+        editor.putString("habitDesc",habitDesc);
+        editor.apply();
 
         habitViewModel= ViewModelProviders.of(this).get(HabitViewModel.class);
         descTv=findViewById(R.id.habitdetaildesc);

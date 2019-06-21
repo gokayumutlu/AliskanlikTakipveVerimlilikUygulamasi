@@ -53,7 +53,7 @@
 
         <TextView
             android:id="@+id/main_linear_tv6"
-            android:layout_width="45dp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp" />

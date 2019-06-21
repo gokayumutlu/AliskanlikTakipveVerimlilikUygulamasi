@@ -32,12 +32,16 @@ public class MainActivity extends AppCompatActivity {
     public static final int EDIT_HABIT_REQUEST=2;
     long interval;
     public String time;
+    int counter=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        counter++; //ilk laucnh ta 1 yapıldı
+
+        AlarmReceiver alarmReceiver=new AlarmReceiver(this);
 
         final Toolbar toolbar=findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 habitViewModel.delete( habitAdapter.getHabitAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this,"Hedef silindi",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,"Hedef silindi",Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.delete_all_habits:
                 habitViewModel.deleteAll();
                 Log.d("Loggg","Bütün hedefler silindi");
-                Toast.makeText(this,"Bütün hedefler silindi",Toast.LENGTH_LONG).show(); break;
+                Toast.makeText(this,"Bütün hedefler silindi",Toast.LENGTH_SHORT).show(); break;
 
             default: return super.onOptionsItemSelected(item);
         }
@@ -145,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             habitViewModel.insert(habit);
 
             Log.d("habit_saved","habit saved");
-            Toast.makeText(this,"Hedef kaydedildi",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Hedef kaydedildi",Toast.LENGTH_SHORT).show();
 
         }
         else if(requestCode==EDIT_HABIT_REQUEST && resultCode==RESULT_OK){
